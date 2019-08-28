@@ -19,6 +19,8 @@ public class Livro implements Serializable{
 	private String titulo;
 	private String autor;
 	
+	/*usuario terá um conjunto de livros, a tabela será chamada de biblioteca*/
+	
 	public Livro(){
 		
 	}
