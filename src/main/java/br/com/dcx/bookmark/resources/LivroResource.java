@@ -1,6 +1,7 @@
 package br.com.dcx.bookmark.resources;
 
 import java.net.URI;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -24,5 +25,11 @@ public class LivroResource {
 		livro = service.insert(livro);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(livro.getId()).toUri();
 		return ResponseEntity.created(uri).build();
+	}
+	
+	@RequestMapping(method = RequestMethod.GET)
+	public ResponseEntity<List<Livro>> findAll(){
+		List<Livro> list = service.findAll();
+		return ResponseEntity.ok().body(list);
 	}
 }
