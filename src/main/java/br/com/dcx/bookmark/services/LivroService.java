@@ -23,4 +23,8 @@ public class LivroService {
 	public List<Livro> findAll(){
 		return repo.findAll();
 	}
+	
+	public void delete(Integer id){
+		repo.deleteById(id);
+	}
 }
