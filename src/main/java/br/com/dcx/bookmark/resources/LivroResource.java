@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import com.yannp.cursomc.domain.Categoria;
+
 
 import br.com.dcx.bookmark.domain.Livro;
 import br.com.dcx.bookmark.services.LivroService;
