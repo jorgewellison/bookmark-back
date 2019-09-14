@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-
+import com.yannp.cursomc.domain.Categoria;
 
 import br.com.dcx.bookmark.domain.Livro;
 import br.com.dcx.bookmark.services.LivroService;
@@ -49,6 +49,13 @@ public class LivroResource {
 	public ResponseEntity<Livro> find(@PathVariable Integer id){
 		Livro livro = service.find(id);
 		return ResponseEntity.ok().body(livro);
+	}
+	
+	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
+	public ResponseEntity<Void> update(@RequestBody Livro livro, @PathVariable Integer id){
+		livro.setId(id);
+		livro = service.update(livro);
+		return ResponseEntity.noContent().build();
 	}
 	
 }

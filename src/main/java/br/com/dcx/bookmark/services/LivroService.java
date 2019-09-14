@@ -23,10 +23,9 @@ public class LivroService {
 	}
 	
 	public Livro find(Integer id) {
-			
-			Optional<Livro> livro = repo.findById(id);
-			return livro.orElseThrow(() -> new ObjectNotFoundException(
-					"Objeto não encontrado! Id: " + id + ", Tipo: " + Livro.class.getName()));
+		Optional<Livro> livro = repo.findById(id);
+		return livro.orElseThrow(() -> new ObjectNotFoundException(
+				"Objeto não encontrado! Id: " + id + ", Tipo: " + Livro.class.getName()));
 		}
 
 	
@@ -36,5 +35,10 @@ public class LivroService {
 	
 	public void delete(Integer id){
 		repo.deleteById(id);
+	}
+	
+	public Livro update(Livro livro){
+		find(livro.getId());
+		return repo.save(livro);
 	}
 }
