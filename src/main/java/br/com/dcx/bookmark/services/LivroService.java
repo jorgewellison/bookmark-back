@@ -1,6 +1,7 @@
 package br.com.dcx.bookmark.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,6 +19,10 @@ public class LivroService {
 	public Livro insert(Livro livro){
 		livro.setId(null); /*Garantindo que o objeto adicionado seja um novo objeto, por isso o id nulo*/
 		return repo.save(livro);
+	}
+	
+	public Optional<Livro> find(Integer id) {
+		return repo.findById(id);
 	}
 	
 	public List<Livro> findAll(){
