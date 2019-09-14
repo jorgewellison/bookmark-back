@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import br.com.dcx.bookmark.domain.Livro;
 import br.com.dcx.bookmark.repositories.LivroRepository;
+import br.com.dcx.bookmark.services.exceptions.ObjectNotFoundException;
 
 @Service
 public class LivroService {
@@ -21,9 +22,13 @@ public class LivroService {
 		return repo.save(livro);
 	}
 	
-	public Optional<Livro> find(Integer id) {
-		return repo.findById(id);
-	}
+	public Livro find(Integer id) {
+			
+			Optional<Livro> livro = repo.findById(id);
+			return livro.orElseThrow(() -> new ObjectNotFoundException(
+					"Objeto não encontrado! Id: " + id + ", Tipo: " + Livro.class.getName()));
+		}
+
 	
 	public List<Livro> findAll(){
 		return repo.findAll();
