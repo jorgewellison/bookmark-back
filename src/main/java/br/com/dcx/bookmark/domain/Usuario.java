@@ -1,11 +1,20 @@
 package br.com.dcx.bookmark.domain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import br.com.dcx.bookmark.domain.Livro;
+
+@Entity
 public class Usuario implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
@@ -18,7 +27,9 @@ public class Usuario implements Serializable {
 	private String senha;
 	private String nickname;
 	
-	
+	@JsonIgnore
+	@OneToMany(mappedBy = "usuario")
+	private List<Livro> livros = new ArrayList<>();
 	
 	public Usuario(){
 		

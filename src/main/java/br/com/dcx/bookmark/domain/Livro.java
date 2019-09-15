@@ -6,6 +6,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+import br.com.dcx.bookmark.domain.Usuario;
 
 
 @Entity
@@ -19,7 +23,11 @@ public class Livro implements Serializable{
 	private String titulo;
 	private String autor;
 	
-	/*usuario terá um conjunto de livros, a tabela será chamada de biblioteca*/
+	
+	@ManyToOne
+	@JoinColumn(name = "usuario_id")
+	private Usuario usuario;
+	
 	
 	public Livro(){
 		
