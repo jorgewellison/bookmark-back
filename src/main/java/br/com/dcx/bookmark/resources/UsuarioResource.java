@@ -36,4 +36,11 @@ public class UsuarioResource {
 		Usuario usuario = service.find(id);
 		return ResponseEntity.ok().body(usuario);
 }
+	
+	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
+	public ResponseEntity<Void> update(@RequestBody Usuario usuario, @PathVariable Integer id){
+		usuario.setId(id);
+		usuario = service.update(usuario);
+		return ResponseEntity.noContent().build();
+	}
 }

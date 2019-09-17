@@ -26,4 +26,9 @@ public class UsuarioService {
 		return usuario.orElseThrow(() -> new ObjectNotFoundException(
 				"Objeto não encontrado! Id: " + id + ", Tipo: " + Usuario.class.getName()));
 		}
+	
+	public Usuario update(Usuario usuario){
+		find(usuario.getId());
+		return userRepo.save(usuario);
+	}
 }
