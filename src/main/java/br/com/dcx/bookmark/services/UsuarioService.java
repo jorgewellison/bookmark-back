@@ -31,4 +31,8 @@ public class UsuarioService {
 		find(usuario.getId());
 		return userRepo.save(usuario);
 	}
+	
+	public void delete(Integer id){
+		userRepo.deleteById(id);
+	}
 }
