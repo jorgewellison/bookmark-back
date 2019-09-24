@@ -24,8 +24,11 @@ public class Usuario implements Serializable {
 	
 	private String nome;
 	private String email;
+	
+	
+	@JsonIgnore
 	private String senha;
-	private String nickname;
+	
 	
 	@JsonIgnore
 	@OneToMany(mappedBy = "usuario")
@@ -35,13 +38,12 @@ public class Usuario implements Serializable {
 		
 	}
 
-	public Usuario(Integer id, String nome, String email, String senha, String nickname) {
+	public Usuario(Integer id, String nome, String email, String senha) {
 		super();
 		this.id = id;
 		this.nome = nome;
 		this.email = email;
 		this.senha = senha;
-		this.nickname = nickname;
 	}
 
 	public Integer getId() {
@@ -76,13 +78,6 @@ public class Usuario implements Serializable {
 		this.senha = senha;
 	}
 
-	public String getNickname() {
-		return nickname;
-	}
-
-	public void setNickname(String nickname) {
-		this.nickname = nickname;
-	}
 
 	@Override
 	public int hashCode() {
